@@ -1,0 +1,154 @@
+OCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ضع بصمتك - اليوم العالمي للسكري</title>
+<style>
+:root {
+--primary-color: #d32f2f;
+--secondary-color: #ffebee;
+--text-color: #333;
+}
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #f4f6f9;
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+.container {
+background: #fff;
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+width: 100%;
+max-width: 500px;
+text-align: center;
+}
+h2 {
+color: var(--primary-color);
+margin-bottom: 10px;
+}
+p {
+color: #666;
+margin-bottom: 20px;
+}
+.input-group {
+margin-bottom: 20px;
+text-align: right;
+}
+label {
+display: block;
+margin-bottom: 8px;
+font-weight: bold;
+color: var(--text-color);
+}
+input[type="text"] {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 8px;
+box-sizing: border-box;
+font-size: 16px;
+}
+.btn {
+background-color: var(--primary-color);
+color: white;
+border: none;
+padding: 12px 20px;
+font-size: 16px;
+border-radius: 8px;
+cursor: pointer;
+width: 100%;
+transition: background 0.3s;
+}
+.btn:hover {
+background-color: #b71c1c;
+}
+
+/* تنسيق الشهادة */
+.certificate {
+display: none;
+border: 5px solid var(--primary-color);
+padding: 30px;
+border-radius: 10px;
+background: #fff;
+margin-top: 20px;
+position: relative;
+}
+.certificate h3 {
+color: var(--primary-color);
+font-size: 24px;
+margin-bottom: 5px;
+}
+.cert-name {
+font-size: 22px;
+font-weight: bold;
+color: #222;
+margin: 15px 0;
+border-bottom: 2px dashed #ddd;
+display: inline-block;
+padding-bottom: 5px;
+}
+.print-btn {
+background-color: #2e7d32;
+margin-top: 15px;
+}
+.print-btn:hover {
+background-color: #1b5e20;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<!-- واجهة إدخال البصمة -->
+<div id="form-section">
+<h2>ضع بصمتك</h2>
+<p>شاركنا بصمتك لدعم اليوم العالمي للسكري واطبع شهادة شكرك فوراً.</p>
+
+<div class="input-group">
+<label for="userName">الاسم الكريم:</label>
+<input type="text" id="userName" placeholder="اكتب اسمك هنا..." required>
+</div>
+
+<button class="btn" onclick="addFingerprint()">أضف بصمتي الآن</button>
+</div>
+
+<!-- واجهة الشهادة (تظهر بعد التسجيل) -->
+<div id="certificate-section" class="certificate">
+<h3>شهادة شكر وتقدير</h3>
+<p>نشكر مشاركتك الفعالة في حملة اليوم العالمي للسكري ووضع بصمتك الإيجابية.</p>
+<div class="cert-name" id="displayName">اسم المشارك</div>
+<p style="font-size: 14px; color: #777;">تم توثيق بصمتك بنجاح في لوحة الفعالية الرقمية.</p>
+<button class="btn print-btn" onclick="window.print()">طباعة الشهادة / حفظ كملف PDF</button>
+</div>
+</div>
+
+<script>
+function addFingerprint() {
+const nameInput = document.getElementById('userName').value.trim();
+
+if (nameInput === "") {
+alert("الرجاء إدخال الاسم قبل المتابعة.");
+return;
+}
+
+// عرض الاسم في الشهادة
+document.getElementById('displayName').innerText = nameInput;
+
+// إخفاء نموذج الإدخال وإظهار الشهادة
+document.getElementById('form-section').style.display = 'none';
+document.getElementById('certificate-section').style.display = 'block';
+
+// (ملاحظة برمجية لاحقاً): هنا يمكنك إضافة كود إرسال البيانات عبر Fetch API أو Firebase لتحديث الشاشة الكبرى
+}
+</script>
+
+</body>
+</html>
+
